@@ -37,7 +37,9 @@ public class Grade implements Serializable{
      * Attributes
      */
 
-    public Grade( ){ }
+    public Grade( ){
+        // Default constructor is required
+    }
 
     /**
      * Getters and Setters

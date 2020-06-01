@@ -46,7 +46,9 @@ public class User implements Serializable{
      * Constructors
      */
 
-    public User( ){ }
+    public User( ){
+        // Default constructor is required
+    }
 
     /**
      * Getters and Setters

@@ -60,11 +60,11 @@ public class UserDetailsImpl implements UserDetails{
     }
 
     private Collection<? extends GrantedAuthority> translateRoles( List<Role> roles ){
-        List<GrantedAuthority> authorities = new ArrayList<>( );
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>( );
         for( Role role : roles ){
             String roleName = "ROLE_" + role.getRoleName( ).toUpperCase( );
-            authorities.add( new SimpleGrantedAuthority( roleName ) );
+            grantedAuthorities.add( new SimpleGrantedAuthority( roleName ) );
         }
-        return authorities;
+        return grantedAuthorities;
     }
 }

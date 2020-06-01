@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RestController
 public class StudentController{
 
@@ -30,7 +29,7 @@ public class StudentController{
 
 
     @PostMapping( value = { "/estudiante/inscribir/periodo/{periodId}/curso/{courseId}" } )
-    public ResponseEntity associateStudent( @PathVariable Integer periodId, @PathVariable Integer courseId ){
+    public ResponseEntity<Void> associateStudent( @PathVariable Integer periodId, @PathVariable Integer courseId ){
         String username = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
         User student = userService.findByUsername( username );
         Course course = courseService.findById( courseId );
@@ -38,13 +37,13 @@ public class StudentController{
         Role role = new Role( );
 
         if( course == null || period == null ){
-            return new ResponseEntity( HttpStatus.BAD_REQUEST );
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
         }
 
         role.setId( Role.ROLE_STUDENT );
         associationService.associate( student, role, course, period );
 
-        return new ResponseEntity( HttpStatus.CREATED );
+        return new ResponseEntity<>( HttpStatus.CREATED );
     }
 
 }

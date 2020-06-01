@@ -32,11 +32,11 @@ public class UserController{
     }
 
     @PostMapping( value = { "/registro/nuevo-usuario/rol/{roleId}" } )
-    public ResponseEntity registerNewUser( @PathVariable Integer roleId, @RequestBody RegisterUserPOJO userPOJO ){
+    public ResponseEntity<Void> registerNewUser( @PathVariable Integer roleId, @RequestBody RegisterUserPOJO userPOJO ){
         Role role = roleService.findById( roleId );
         User existingUser = userService.findByUsername( userPOJO.getUsername( ) );
         if( role == null || existingUser != null || !userService.isRightUser( userPOJO ) ){
-            return new ResponseEntity( HttpStatus.BAD_REQUEST );
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
         }
         User newUser = new User( );
         newUser.setNames( userPOJO.getNames( ).toUpperCase( ) );
@@ -45,22 +45,22 @@ public class UserController{
         newUser.setPassword( passwordEncoder.encode( userPOJO.getPassword( ) ) );
         newUser.setRoles( Collections.singletonList( role ) );
         userService.save( newUser );
-        return new ResponseEntity( HttpStatus.CREATED );
+        return new ResponseEntity<>( HttpStatus.CREATED );
     }
 
     @PostMapping( value = { "/registro/nuevo-rol/{roleId}" }, consumes = MediaType.APPLICATION_JSON_VALUE )
-    public ResponseEntity registerRoleToUser( @PathVariable Integer roleId, @RequestBody LoginUserPOJO pojo ){
+    public ResponseEntity<Void> registerRoleToUser( @PathVariable Integer roleId, @RequestBody LoginUserPOJO pojo ){
         Role role = roleService.findById( roleId );
         String username = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
         User existingUser = userService.findByUsername( username );
         if( role == null || existingUser.hasRole( role ) ){
-            return new ResponseEntity( HttpStatus.BAD_REQUEST );
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
         }else if( !passwordEncoder.matches( pojo.getPassword( ), existingUser.getPassword( ) ) ){
-            return new ResponseEntity( HttpStatus.UNAUTHORIZED );
+            return new ResponseEntity<>( HttpStatus.UNAUTHORIZED );
         }
         existingUser.addRole( role );
         userService.save( existingUser );
-        return new ResponseEntity( HttpStatus.CREATED );
+        return new ResponseEntity<>( HttpStatus.CREATED );
     }
 
 }

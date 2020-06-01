@@ -17,12 +17,12 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter{
 
-    private final static String TRUSTED_CLIENT = "soft-eng-ii";
-    private final static String SECRET = "secret";
-    private final static String[] AUTHORIZED_GRANT_TYPES = new String[]{ "client_credentials", "password" };
-    private final static String[] SCOPES = new String[]{ "read", "write", "trust" };
-    private final static String[] RESOURCE_IDS = new String[] { "oauth2-resource" };
-    private final static int ACCESS_TOKEN_VALIDITY_SECONDS = 1600;
+    private static final String TRUSTED_CLIENT = "soft-eng-ii";
+    private static final String SECRET = "secret";
+    private static final String[] AUTHORIZED_GRANT_TYPES = new String[]{ "client_credentials", "password" };
+    private static final String[] SCOPES = new String[]{ "read", "write", "trust" };
+    private static final String[] RESOURCE_IDS = new String[] { "oauth2-resource" };
+    private static final int ACCESS_TOKEN_VALIDITY_SECONDS = 1600;
 
 
     private AuthenticationManager authenticationManager;

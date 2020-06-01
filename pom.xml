@@ -16,6 +16,11 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+
+		<sonar.projectKey>software-engineering-II_labs-backend</sonar.projectKey>
+		<sonar.organization>software-engineering-ii</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.login>74dfdc55f2355dd7383f0a2a147a76a068eeb22d</sonar.login>
 	</properties>
 
 	<dependencies>

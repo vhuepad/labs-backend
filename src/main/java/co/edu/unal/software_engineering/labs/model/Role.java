@@ -16,8 +16,8 @@ public class Role implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    public final static int ROLE_STUDENT = 1;
-    public final static int ROLE_TEACHER = 2;
+    public static final int ROLE_STUDENT = 1;
+    public static final int ROLE_TEACHER = 2;
 
     /**
      * Attributes
@@ -39,7 +39,9 @@ public class Role implements Serializable{
      * Constructors
      */
 
-    public Role( ){ }
+    public Role( ){
+        // Default constructor is required
+    }
 
     /**
      * Getters and Setters

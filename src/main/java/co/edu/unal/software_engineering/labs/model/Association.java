@@ -39,10 +39,8 @@ public class Association implements Serializable{
 
     //bi-directional many-to-one association to UserRole
     @ManyToOne
-    @JoinColumns( {
-            @JoinColumn( name = "role_id", referencedColumnName = "role_id" ),
-            @JoinColumn( name = "user_id", referencedColumnName = "user_id" )
-    } )
+    @JoinColumn( name = "role_id", referencedColumnName = "role_id" )
+    @JoinColumn( name = "user_id", referencedColumnName = "user_id" )
     private UserRole userRole;
 
     //bi-directional many-to-one association to Grade

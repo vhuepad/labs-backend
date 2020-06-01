@@ -39,7 +39,9 @@ public class Period implements Serializable{
      * Contructors
      */
 
-    public Period( ){ }
+    public Period( ){
+        // Default constructor is required
+    }
 
     /**
      * Getters and Setters

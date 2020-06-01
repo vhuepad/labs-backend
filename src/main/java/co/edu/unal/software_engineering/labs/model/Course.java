@@ -42,7 +42,9 @@ public class Course implements Serializable{
      * Constructors
      */
 
-    public Course( ){ }
+    public Course( ){
+        // Default constructor is required
+    }
 
     /**
      * Getters and Setters
