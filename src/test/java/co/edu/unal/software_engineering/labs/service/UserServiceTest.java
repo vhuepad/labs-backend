@@ -1,5 +1,4 @@
 package co.edu.unal.software_engineering.labs.service;
-import co.edu.unal.software_engineering.labs.model.User;
 import co.edu.unal.software_engineering.labs.pojo.RegisterUserPOJO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,7 @@ public class UserServiceTest {
         pojo.setNames( names );
         pojo.setSurnames( names );
         pojo.setUsername( names );
-        pojo.setPassword( names );
+        
         Boolean user = userService.isRightUser(pojo);
         assertEquals(true, user);
     }
