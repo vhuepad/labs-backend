@@ -1,6 +1,7 @@
 package co.edu.unal.software_engineering.labs.service;
 
 import co.edu.unal.software_engineering.labs.model.User;
+import co.edu.unal.software_engineering.labs.pojo.RegisterUserPOJO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -19,13 +20,12 @@ public class UserServiceTest {
     @Test
     public void userTest() {
         String names = "Nombre";
-
-        User user = new User( );
+        RegisterUserPOJO user = new RegisterUserPOJO();
         user.setNames( names );
         user.setSurnames( names );
         user.setUsername( names );
-        user.setPassword( names );
-        userService.save( user );
+        user.setPassword( "" );
+        userService.isRightUser( user );
         User findUser = userService.findByUsername( names );
         assertEquals( user, findUser );
     }
