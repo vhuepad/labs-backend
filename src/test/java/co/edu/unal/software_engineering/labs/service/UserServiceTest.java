@@ -1,5 +1,4 @@
 package co.edu.unal.software_engineering.labs.service;
-
 import co.edu.unal.software_engineering.labs.model.User;
 import co.edu.unal.software_engineering.labs.pojo.RegisterUserPOJO;
 import org.junit.Test;
@@ -18,15 +17,14 @@ public class UserServiceTest {
     }
 
     @Test
-    public void userTest() {
+    public void isRightUserTest() {
         String names = "Nombre";
-        RegisterUserPOJO user = new RegisterUserPOJO();
-        user.setNames( names );
-        user.setSurnames( names );
-        user.setUsername( names );
-        user.setPassword( "" );
-        userService.isRightUser( user );
-        User findUser = userService.findByUsername( names );
-        assertEquals( user, findUser );
+        RegisterUserPOJO pojo = new RegisterUserPOJO();
+        pojo.setNames( names );
+        pojo.setSurnames( names );
+        pojo.setUsername( names );
+        pojo.setPassword( names );
+        Boolean user = userService.isRightUser(pojo);
+        assertEquals(true, user);
     }
 }
